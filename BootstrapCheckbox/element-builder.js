@@ -85,7 +85,7 @@ class ElementBuilder {
    * 
    * @param {Element} parent Parent node to append
    * @param {string} id Input element identifier
-   * @param {string} text The value of the input
+   * @param {string} text The text content of the tag
    * @param {Array} classes List of classes
    * @returns Created element
    */
@@ -100,4 +100,91 @@ class ElementBuilder {
     return labelElement;
   }
 
+  createText(text = "") {
+    return document.createTextNode(text);
+  }
+
+  /**
+   * Create an new SMALL element and append it to 'parent'
+   * 
+   * @param {Element} parent Parent node to append
+   * @param {string} text The text content of the tag
+   * @param {Array} classes List of classes
+   * @returns Created element
+   */
+  createSmall(parent, text = "", classes = null) {
+    const smallElement = this.createElement(parent, "small", classes);
+    if (text) {
+      smallElement.appendChild(this.createText(text));
+    }
+    return smallElement;
+  }
+
+  /**
+   * Create an new SPAN element and append it to 'parent'
+   * 
+   * @param {Element} parent Parent node to append
+   * @param {string} text The text content of the tag
+   * @param {Array} classes List of classes
+   * @returns Created element
+   */
+  createSpan(parent, text = "", classes = null) {
+    const spanElement = this.createElement(parent, "span", classes);
+    if (text) {
+      spanElement.appendChild(this.createText(text));
+    }
+    return spanElement;
+  }
+
+  /**
+   * Create an new P element and append it to 'parent'
+   * 
+   * @param {Element} parent Parent node to append
+   * @param {string} text The text content of the tag
+   * @param {Array} classes List of classes
+   * @returns Created element
+   */
+  createP(parent, text = "", classes = null) {
+    const pElement = this.createElement(parent, "p", classes);
+    if (text) {
+      pElement.appendChild(this.createText(text));
+    }
+    return pElement;
+  }
+
+  /**
+   * Create an new A element and append it to 'parent'
+   * 
+   * @param {Element} parent Parent node to append
+   * @param {string} [href=""] The URL
+   * @param {string} [text=""] The text content of the tag
+   * @param {Array} classes List of classes
+   * @returns Created element
+   */
+  createA(parent, href = "", text = "", classes = null) {
+    const aElement = this.createElement(parent, "a", classes);
+    if (href) {
+      aElement.href = href;
+    }
+    if (text) {
+      aElement.appendChild(this.createText(text));
+    }
+    return aElement;
+  }
+
+  /**
+   * Create an new H5 element and append it to 'parent'
+   * 
+   * @param {Element} parent Parent node to append
+   * @param {string} text The text content of the tag
+   * @param {Array} classes List of classes
+   * @returns Created element
+   */
+  createH5(parent, text = "", classes = null) {
+    const h5Element = this.createElement(parent, "h5", classes);
+    if (text) {
+      h5Element.appendChild(this.createText(text));
+    }
+    return h5Element;
+  }
 }
