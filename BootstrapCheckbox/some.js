@@ -28,7 +28,7 @@ const anObject = JSON.parse('{\
  * Create an new HTML element named 'name' and append it to 'parent'
  *
  * @param {Element} parent Parent node to append
- * @param {String} name Element name
+ * @param {string} name Element name
  * @param {Array} classes List of classes
  * @returns Created element
  */
@@ -52,15 +52,40 @@ function createElement(parent, name, classes = null) {
   return element;
 }
 
+/**
+ * Create an new FORM element and append it to 'parent'
+ * 
+ * @param {Element} parent Parent node to append
+ * @param {Array} classes List of classes
+ * @returns Created element
+ */
 function createForm(parent, classes = null) {
   return createElement(parent, "form", classes);
 }
 
+/**
+ * Create an new DIV element and append it to 'parent'
+ * 
+ * @param {Element} parent Parent node to append
+ * @param {Array} classes List of classes
+ * @returns Created element
+ */
 function createDiv(parent, classes = null) {
   return createElement(parent, "div", classes);
 }
 
-function createInput(parent, type, id, name, value = "", classes = null) {
+/**
+ * Create an new INPUT element and append it to 'parent'
+ * 
+ * @param {Element} parent Parent node to append
+ * @param {string} type Input type: test, password, checkbox etc.
+ * @param {string} id Element identifier
+ * @param {string} name Element name
+ * @param {string} [value=""] The initial value of the input
+ * @param {Array} classes List of classes
+ * @returns Created element
+ */
+function createInput(parent, type, id = null, name = null, value = "", classes = null) {
   const inputElement = createElement(parent, "input", classes);
   inputElement.type = type;
   if (name) {
@@ -75,6 +100,15 @@ function createInput(parent, type, id, name, value = "", classes = null) {
   return inputElement;
 }
 
+/**
+ * Create an new LABEL element and append it to 'parent'
+ * 
+ * @param {Element} parent Parent node to append
+ * @param {string} id Input element identifier
+ * @param {string} text The value of the input
+ * @param {Array} classes List of classes
+ * @returns Created element
+ */
 function createLabel(parent, id, text, classes = null) {
   const labelElement = createElement(parent, "label", classes);
   if (id) {
@@ -90,6 +124,13 @@ function createId(object) {
   return object.type + "-" + object.id;
 }
 
+/**
+ * Toggle all checkboxes
+ * 
+ * @param {Element} parent Parent node that contains checkboxes
+ * @param {Element} thisSelect "Select All" checkbox
+ * @param {string} name The name of checkboxes
+ */
 function checkAll(parent, thisSelect, name) {
   var checkboxes = parent.querySelectorAll('input[type="checkbox"][name="' + name + '"]');
   for (var i = 0; i < checkboxes.length; i++) {
